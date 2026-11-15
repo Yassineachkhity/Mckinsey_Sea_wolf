@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050505">
+  <title>Ocean Lab · Microbe matcher</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/model.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="/" aria-label="Ocean Lab home"><span class="brand-mark">≋</span> OCEAN<span>LAB</span></a><nav class="flow-steps" aria-label="Setup progress"><span id="step-ocean" aria-current="step">01 <span>Ocean</span></span><span class="flow-line"></span><span id="step-deck">02 <span>Microbes</span></span></nav></header>
+  <main>
+    <form id="solver-form">
+      <div class="workspace">
+        <fieldset id="ocean-screen" class="ocean-panel panel"><legend class="sr-only">Ocean conditions</legend><div class="setup-heading"><span class="setup-index">01 / OCEAN SETUP</span><h1>Ocean conditions</h1><p>Set the ranges and traits for this site.</p></div><div class="setup-columns"><div class="setup-ranges">
+          <div class="range-heading"><h3>Target ranges</h3><span>Width of 2</span></div><p class="helper">Enter a lower value; the upper value follows.</p><div id="ranges"></div>
+          </div><div class="setup-traits"><div class="trait-editor"><label for="trait-names">Your trait list</label><p class="helper" id="trait-help">Enter one name per line, with no fixed number of traits. Include at least two so desired and excluded can differ.</p><textarea id="trait-names" rows="6" aria-describedby="trait-help trait-edit-help" placeholder="Light sensitive&#10;Salt tolerant&#10;Cold resistant"></textarea><p class="helper" id="trait-edit-help">Apply your list before choosing traits below. Removing or renaming a trait clears its previous selections.</p><button type="button" id="apply-traits" class="text-button">Apply trait list</button><p id="trait-status" role="status"></p></div><div class="trait-group"><h3><span class="status-dot desired"></span>Desired trait</h3><p class="helper">At least one of the three must have it.</p><div id="desired" class="ocean-traits"></div></div>
+          <div class="trait-group"><h3><span class="status-dot excluded"></span>Excluded trait</h3><p class="helper">None of the three can have it.</p><div id="undesired" class="ocean-traits"></div></div>
+          </div></div><div class="setup-footer"><span>Next: your microbe deck</span><button class="primary" type="submit" id="continue">Save and continue <span>→</span></button></div>
+        </fieldset>
+        <fieldset id="deck-screen" class="microbes-section" hidden disabled><legend class="sr-only">Microbe deck</legend><div class="deck-header"><div class="deck-heading"><span class="setup-index">02 / MICROBE DECK</span><h1 tabindex="-1" id="deck-title">Your microbes <span class="count">10</span></h1><p>Enter stats. Select every trait that applies.</p><div class="actions"><button type="button" id="example" class="text-button">Load example</button><button type="button" id="reset" class="text-button muted">Clear all</button></div></div><aside class="site-note" aria-label="Saved ocean conditions"><div class="note-heading"><h2><span class="note-pin" aria-hidden="true"></span>Ocean conditions</h2><button type="button" id="edit-ocean" class="text-button">Edit ↗</button></div><div id="site-summary"></div></aside></div>
+          <div class="legend" aria-label="Available traits"><span class="legend-label">YOUR TRAITS</span><div id="legend-items"></div></div>
+          <div class="deck-progress" role="progressbar" aria-label="Completed microbes" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0"><span></span></div><div id="microbes" class="microbe-grid"></div>
+          <div class="run-panel"><div><strong id="progress">0 of 10 microbes ready</strong><p id="save-status">Your entries stay in this browser.</p></div><button class="primary" id="solve" type="submit">Run match <span>→</span></button></div>
+        </fieldset>
+      </div>
+      <p id="error" class="error" role="alert" hidden></p>
+    </form>
+    <section id="results" class="results panel" aria-live="polite" hidden></section>
+  </main>
+</body>
+</html>

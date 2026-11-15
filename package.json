@@ -1,0 +1,10 @@
+{
+  "name": "ocean-lab-tests",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/test_model.js tests/test_app.js"
+  },
+  "devDependencies": {
+    "jsdom": "26.1.0"
+  }
+}
